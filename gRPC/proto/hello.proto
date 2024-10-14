@@ -1,11 +1,18 @@
 syntax = "proto3";
 
-option go_package = "pb/";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/hiroto1220/go-playground/gRPC/gen";
 
 package hello;
 
 service HelloService {
-    rpc Hello(HelloRequest) returns (HelloResponse){}
+    rpc Hello(HelloRequest) returns (HelloResponse){
+        option (google.api.http) = {
+            post: "/custom/path/hello"
+            body: "*"
+        };
+    }
 }
 
 message HelloRequest {
