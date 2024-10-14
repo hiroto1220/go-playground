@@ -9,7 +9,7 @@ package hello;
 service HelloService {
     rpc Hello(HelloRequest) returns (HelloResponse){
         option (google.api.http) = {
-            post: "/custom/path/hello"
+            post: "/hello"
             body: "*"
         };
     }
