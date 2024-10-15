@@ -1,0 +1,11 @@
+version: v2
+plugins:
+  - local: protoc-gen-go
+    out: gen
+    opt:
+      - module=github.com/hiroto1220/go-playground/connect/gen
+  - local: protoc-gen-connect-go
+    out: gen
+    opt: 
+      - module=github.com/hiroto1220/go-playground/connect/gen
+ 
