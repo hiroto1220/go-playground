@@ -15,10 +15,7 @@ import (
 
 type GreetServer struct{}
 
-func (s *GreetServer) Greet(
-	ctx context.Context,
-	req *connect.Request[greet.GreetRequest],
-) (*connect.Response[greet.GreetResponse], error) {
+func (s *GreetServer) Greet(ctx context.Context, req *connect.Request[greet.GreetRequest]) (*connect.Response[greet.GreetResponse], error) {
 	log.Println("Request headers: ", req.Header())
 	res := connect.NewResponse(&greet.GreetResponse{
 		Message: fmt.Sprintf("Hello, %s!", req.Msg.Name),
