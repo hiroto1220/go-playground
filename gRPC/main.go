@@ -1,13 +1,13 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"fmt"
 	"log"
 	"net"
 
-	pb "github.com/hiroto1220/go-playground/gRPC/pb"
+	pb "github.com/hiroto1220/go-playground/gRPC/gen"
+	"github.com/hiroto1220/go-playground/gRPC/server"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -17,15 +17,6 @@ var (
 	port = flag.Int("port", 50051, "The server port")
 )
 
-type server struct {
-	pb.UnimplementedHelloServiceServer
-}
-
-func (s *server) Hello(_ context.Context, in *pb.HelloRequest) (*pb.HelloResponse, error) {
-	log.Printf("Received: %v", in.GetName())
-	return &pb.HelloResponse{Message: "Hello " + in.GetName()}, nil
-}
-
 func main() {
 	flag.Parse()
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
@@ -34,7 +25,7 @@ func main() {
 	}
 
 	s := grpc.NewServer()
-	pb.RegisterHelloServiceServer(s, &server{})
+	pb.RegisterGreeterServer(s, &server.GreeterServer{})
 	log.Printf("server listening at %v", lis.Addr())
 
 	reflection.Register(s)

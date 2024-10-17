@@ -1,23 +1,10 @@
 version: v2
 plugins:
   - local: protoc-gen-go
-    out: gen/go
+    out: gen
     opt:
-      - paths=source_relative
+      - module=github.com/hiroto1220/go-playground/gRPC/gen
   - local: protoc-gen-go-grpc
-    out: gen/go
-    opt:
-      - paths=source_relative
-  - local: protoc-gen-go
-    out: ./gateway/gen/go
-    opt:
-      - paths=source_relative
-  - local: protoc-gen-go-grpc
-    out: ./gateway/gen/go
-    opt:
-      - paths=source_relative
-  - local: protoc-gen-grpc-gateway
-    out: ./gateway/gen/go
-    opt:
-      - paths=source_relative
-      - generate_unbound_methods=true
+    out: gen
+    opt: 
+      - module=github.com/hiroto1220/go-playground/gRPC/gen
