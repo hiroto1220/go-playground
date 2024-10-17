@@ -1,0 +1,15 @@
+version: v2
+plugins:
+  - local: protoc-gen-go
+    out: gen
+    opt:
+      - module=github.com/hiroto1220/go-playground/gRPC-gateway/gen
+  - local: protoc-gen-go-grpc
+    out: gen
+    opt: 
+      - module=github.com/hiroto1220/go-playground/gRPC-gateway/gen
+  - local: protoc-gen-grpc-gateway 
+    out: gen
+    opt:
+      - module=github.com/hiroto1220/go-playground/gRPC-gateway/gen
+ 
