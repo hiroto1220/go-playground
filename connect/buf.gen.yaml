@@ -8,4 +8,3 @@ plugins:
     out: gen
     opt: 
       - module=github.com/hiroto1220/go-playground/connect/gen
- 

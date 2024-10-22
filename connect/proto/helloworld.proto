@@ -2,17 +2,16 @@ syntax = "proto3";
 
 option go_package = "github.com/hiroto1220/go-playground/connect/gen;greet";
 
-package greet;
+package hello;
 
-service GreetService {
-    rpc Greet(GreetRequest) returns (GreetResponse){}
+service Greeter {
+    rpc SayHello(HelloRequest) returns (HelloResponse){ }
 }
 
-message GreetRequest {
+message HelloRequest {
     string name = 1;
 }
 
-message GreetResponse {
+message HelloResponse {
     string message = 1;
 }
-
