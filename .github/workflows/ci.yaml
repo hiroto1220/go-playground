@@ -26,10 +26,10 @@ jobs:
 
       - name: Install dependencies
         run: go mod tidy
-        working-directory: ./playground/testcontainers
+        working-directory: ./testcontainers
 
 
       - name: Run Go tests
         run: go test -v
-        working-directory: ./playground/testcontainers
+        working-directory: ./testcontainers
 
