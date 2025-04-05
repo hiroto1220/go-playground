@@ -30,6 +30,6 @@ jobs:
 
 
       - name: Run Go tests
-        run: go test -v
+        run: go test -v ./...
         working-directory: ./testcontainers
 
