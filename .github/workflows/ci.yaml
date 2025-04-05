@@ -14,9 +14,6 @@ jobs:
   test:
     name: Run Go Tests in testcontainers module
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./playground/testcontainers
 
     steps:
       - name: Checkout repository
@@ -29,6 +26,10 @@ jobs:
 
       - name: Install dependencies
         run: go mod tidy
+        working-directory: ./playground/testcontainers
+
 
       - name: Run Go tests
         run: go test -v
+        working-directory: ./playground/testcontainers
+
