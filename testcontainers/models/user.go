@@ -1,7 +1,8 @@
-package handler
+package models
 
 import (
 	"database/sql"
+	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -27,7 +28,7 @@ func (r *UserRepository) FetchUserByID(userID string) (*User, error) {
 	err := row.Scan(&user.ID, &user.Name, &user.Email)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			return nil, nil // ユーザーが見つからなかった場合
+			return nil, fmt.Errorf("no user found with id %s", userID)
 		}
 		return nil, err
 	}
